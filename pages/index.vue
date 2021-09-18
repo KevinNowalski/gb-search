@@ -1,5 +1,3 @@
 <template>
- <div>
-   <Search />
- </div>
+    <Search />
 </template>
