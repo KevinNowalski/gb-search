@@ -1,5 +1,9 @@
 # gb-search
 
+## .env file
+
+In the browser folder, add a .env set YOUR_API_KEY_HERE to your api key
+
 ## Build Setup
 
 ```bash
