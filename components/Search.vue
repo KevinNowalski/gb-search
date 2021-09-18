@@ -1,50 +1,35 @@
 <template>
   <v-app>
-   <v-app-bar
-      height="350px"
-      absolute
-      color="#6A76AB"
-      dark
-      shrink-on-scroll
-      prominent
-      src="https://picsum.photos/1920/1080?random"
-      fade-img-on-scroll
-      scroll-target="#scrolling-techniques-3"
-    >
-        <template #img:img="{ props }">
-            <v-img
-            v-bind="props"
-            gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
-            ></v-img>
-        </template>
-
-        <v-app-bar-title>Search Google Books</v-app-bar-title>
-
-        <v-spacer></v-spacer>
-
-        <v-form ref="form" @submit.prevent="googleBooks">
-            <v-text-field
-                v-model="searchInput"
-                placeholder="Search"
-                prepend-inner-icon="mdi-magnify"
-                class="search mt-1"
-                filled
-                dense
-            ></v-text-field>
-        </v-form>
-    </v-app-bar>
-    <div id="search-results">
-        <ul v-for="searchResult in searchResults" :key="searchResult.id">
-            <li><span>Title:</span> {{searchResult.volumeInfo.title}}</li>
-            <li><span>Authors:</span> {{searchResult.volumeInfo.authors}}</li>
-            <li><span>Description:</span> {{searchResult.volumeInfo.description}}</li>
-            <li><span>Categories:</span> {{searchResult.volumeInfo.categories}}</li>
-            <li><span>Publisher:</span> {{searchResult.volumeInfo.publisher}}</li>
-            <li><span>Pubilished Date:</span> {{searchResult.volumeInfo.publishedDate}}</li>
-            <li><span>Preview link:</span> <a :href="searchResult.volumeInfo.previewLink" target="_blank">{{searchResult.volumeInfo.previewLink}}</a></li>
-            <li><a :href="searchResult.volumeInfo.previewLink" target="_blank"><img :src="searchResult.volumeInfo.imageLinks.smallThumbnail" alt="cover image"></a></li>
-        </ul>
-    </div><!-- /#search-results -->
+    <div class="container">
+        <div id="v-app-bar-title-form">
+            <div id="v-app-bar-title-form-inner">
+                <v-app-bar-title>Search Google Books</v-app-bar-title>
+                <v-form ref="form" @submit.prevent="googleBooks">
+                    <v-text-field
+                        v-model="searchInput"
+                        placeholder="Start your search"
+                        prepend-inner-icon="mdi-magnify"
+                        class="search mt-1"
+                        filled
+                        dense
+                    ></v-text-field>
+                </v-form>
+            </div>
+        </div>
+        <div id="search-results">
+            <ul v-for="searchResult in searchResults" :key="searchResult.id">
+                <li><span>Title:</span> {{searchResult.volumeInfo.title}}</li>
+                <li><span>Authors:</span> {{searchResult.volumeInfo.authors}}</li>
+                <li><span>Description:</span> {{searchResult.volumeInfo.description}}</li>
+                <li><span>Categories:</span> {{searchResult.volumeInfo.categories}}</li>
+                <li><span>Publisher:</span> {{searchResult.volumeInfo.publisher}}</li>
+                <li><span>Pubilished Date:</span> {{searchResult.volumeInfo.publishedDate}}</li>
+                <li><span>Preview link:</span> <a :href="searchResult.volumeInfo.previewLink" target="_blank">{{searchResult.volumeInfo.previewLink}}</a></li>
+                <li><a :href="searchResult.volumeInfo.previewLink" target="_blank"><img :src="searchResult.volumeInfo.imageLinks.smallThumbnail" alt="cover image"></a></li>
+            </ul>
+        </div><!-- /#search-results -->
+    </div>
+    <div id="copyright">© 2021 <a href="http://kevinnowalski.com/" target="_blank">Kevin Nowalski</a></div>
   </v-app>
 </template>
 
@@ -59,7 +44,7 @@ export default {
   },
   methods: {
     googleBooks() {
-      axios.get("http://localhost:3000/search", {
+      axios.get("http://localhost:3000/googlebooks", {
         params: {
           searchInput: this.searchInput
         }
@@ -77,27 +62,32 @@ export default {
 </script>
 
 <style>
-    .v-application--wrap{min-height:unset!important}
-
-    .v-sheet{position:relative!important}
-
-    .v-toolbar__content {
+    .container{
         width: 1320px;
-        margin: 0 auto;
+        margin: 30px auto 0;
         max-width: 100%;
-        display: block!important
+        padding: 0 15px;
     }
 
-    .v-toolbar__title{
-        margin:119px 0 30px
+    #v-app-bar-title-form{
+        min-height:380px;
+        display:flex;
+        justify-content:center;
+        align-items:flex-end
     }
 
-    .v-app-bar-title__content {
-        width: 100% !important;
+    .v-toolbar__title{font-size:40px;text-align:center;margin-bottom:25px}
+
+    .theme--dark.v-application {
+        background: #202945
     }
+
+    .theme--dark.v-icon{color:#fff!important}
+
+    .v-application .primary--text{caret-color:#fff!important}
 
     .search {
-        max-width:600px!important;
+        width:600px!important
     }
 
     .search .v-input__slot::before{
@@ -111,27 +101,20 @@ export default {
     .search .v-input__slot input::placeholder{color:#fff!important;opacity:1}
 
     .search .v-input__slot {
-    border: 1px solid #fff;
-    border-radius: 25px !important;
-    height: 50px;
+        border: 1px solid #fff;
+        border-radius: 25px !important;
+        height: 50px;
     }
 
     .search .v-icon {
-    display: no;
-    margin-top: 8px;
-    }
-
-    #search-results {
-    width: 1320px;
-    margin: 30px auto 0;
-    max-width: 100%;
-    padding: 0 15px;
+        display: no;
+        margin-top: 8px;
     }
 
     #search-results ul {
-    padding: 30px 0;
-    border-bottom: 1px solid #000;
-    list-style: none;
+        padding: 30px 0;
+        border-bottom: 1px solid #fff;
+        list-style: none;
     }
 
     #search-results ul:first-of-type {
@@ -149,4 +132,25 @@ export default {
     #search-results ul li span{
     font-weight:500;
     }
+
+    #copyright{position:absolute;left:15px;bottom:15px}
+
+    #copyright a{
+        color:#fff;text-decoration:none
+    }
+
+    #copyright a:hover{
+        text-decoration:underline
+    }
+
+    @media only screen and (max-width:991px) {
+        .search{max-width:600px}
+    }
+
+    @media only screen and (max-width:767px) {
+        .v-toolbar__title{font-size:25px;margin-bottom:15px}
+        .search{max-width:280px}
+        
+    }
+    
 </style>

@@ -26,7 +26,7 @@ async function start() {
   // We get Nuxt instance
   const nuxt = await loadNuxt(isDev ? 'dev' : 'start')
 
-  app.get('/search', (req, res)=>{
+  app.get('/googlebooks', (req, res)=>{
     models.Searches.findAll({
       attributes: ['dataReturned'],
         where: {
