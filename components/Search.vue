@@ -66,7 +66,7 @@ export default {
     body {
         position:relative
     }
-    
+
     .container {
         width: 1320px;
         margin: 30px auto 0;
@@ -118,7 +118,8 @@ export default {
     }
 
     #search-results {
-        margin-top: -95px
+        margin-top: -95px;
+        margin-bottom: 30px
     }
 
     #search-results ul {
