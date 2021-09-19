@@ -64,7 +64,9 @@ export default {
 <style type="text/css">
 
     body {
-        position:relative
+        position:relative;
+        overflow-x: hidden;
+        word-break: break-all;
     }
 
     .container {
