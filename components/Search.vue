@@ -61,7 +61,7 @@ export default {
 }
 </script>
 
-<style>
+<style type="text/css">
     .container{
         width: 1320px;
         margin: 30px auto 0;
@@ -87,7 +87,8 @@ export default {
     .v-application .primary--text{caret-color:#fff!important}
 
     .search {
-        width:600px!important
+        width:600px!important;
+        margin:4px auto 0 !important
     }
 
     .search .v-input__slot::before{
@@ -148,7 +149,7 @@ export default {
     }
 
     @media only screen and (max-width:767px) {
-        .v-toolbar__title{font-size:25px;margin-bottom:15px}
+        #v-app-bar-title-form-inner h2{font-size:25px;margin-bottom:15px}
         .search{max-width:280px}
         
     }

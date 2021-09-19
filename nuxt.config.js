@@ -4,7 +4,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s',
-    title: 'gb-search',
+    title: 'Search Google Books',
     htmlAttrs: {
       lang: 'en'
     },
