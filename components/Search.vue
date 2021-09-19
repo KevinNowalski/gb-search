@@ -62,14 +62,19 @@ export default {
 </script>
 
 <style type="text/css">
-    .container{
+
+    body {
+        position:relative
+    }
+    
+    .container {
         width: 1320px;
         margin: 30px auto 0;
         max-width: 100%;
         padding: 0 15px;
     }
 
-    #v-app-bar-title-form{
+    #v-app-bar-title-form {
         min-height:380px;
         display:flex;
         justify-content:center;
@@ -95,11 +100,11 @@ export default {
         border-color:transparent!important
     }
 
-    .search .v-input__slot::after{
+    .search .v-input__slot::after {
         display:none
     }
 
-    .search .v-input__slot input::placeholder{color:#fff!important;opacity:1}
+    .search .v-input__slot input::placeholder {color:#fff!important;opacity:1}
 
     .search .v-input__slot {
         border: 1px solid #fff;
@@ -134,17 +139,17 @@ export default {
         padding: 15px 0;
     }
 
-    #search-results ul li span{
+    #search-results ul li span {
     font-weight:500;
     }
 
-    #copyright{position:absolute;left:15px;bottom:15px}
+    #copyright {position:absolute;left:15px;bottom:15px}
 
-    #copyright a{
+    #copyright a {
         color:#fff;text-decoration:none
     }
 
-    #copyright a:hover{
+    #copyright a:hover {
         text-decoration:underline
     }
 
