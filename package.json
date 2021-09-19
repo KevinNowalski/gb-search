@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "client":"nuxt",
     "dev": "node api/server.js",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "start": "nuxt",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "prepare": "husky install",
