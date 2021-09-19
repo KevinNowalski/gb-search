@@ -73,7 +73,7 @@ export default {
         min-height:380px;
         display:flex;
         justify-content:center;
-        align-items:flex-end
+        align-items:center
     }
 
     #v-app-bar-title-form-inner h2{font-size:40px;text-align:center;margin-bottom:25px}
@@ -110,6 +110,10 @@ export default {
     .search .v-icon {
         display: no;
         margin-top: 8px;
+    }
+
+    #search-results {
+        margin-top: -95px
     }
 
     #search-results ul {
