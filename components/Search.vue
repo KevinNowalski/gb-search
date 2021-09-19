@@ -3,7 +3,7 @@
     <div class="container">
         <div id="v-app-bar-title-form">
             <div id="v-app-bar-title-form-inner">
-                <v-app-bar-title>Search Google Books</v-app-bar-title>
+                <h2>Search Google Books</h2>
                 <v-form ref="form" @submit.prevent="googleBooks">
                     <v-text-field
                         v-model="searchInput"
@@ -76,7 +76,7 @@ export default {
         align-items:flex-end
     }
 
-    .v-toolbar__title{font-size:40px;text-align:center;margin-bottom:25px}
+    #v-app-bar-title-form-inner h2{font-size:40px;text-align:center;margin-bottom:25px}
 
     .theme--dark.v-application {
         background: #202945
