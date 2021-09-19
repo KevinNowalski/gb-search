@@ -145,12 +145,12 @@ export default {
     }
 
     @media only screen and (max-width:991px) {
-        .search{max-width:600px}
+        .search{max-width:600px!important}
     }
 
     @media only screen and (max-width:767px) {
         #v-app-bar-title-form-inner h2{font-size:25px;margin-bottom:15px}
-        .search{max-width:280px}
+        .search{max-width:280px!important}
         
     }
     
