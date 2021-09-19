@@ -113,7 +113,7 @@ export default {
     }
 
     .search .v-icon {
-        display: no;
+        display: none;
         margin-top: 8px;
     }
 
