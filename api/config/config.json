@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "googlebooks",
-    "host": "127.0.0.1",
+    "username": "b501768870e4df",
+    "password": "a8ba3745",
+    "database": "heroku_715ddae4244bab1",
+    "host": "us-cdbr-east-04.cleardb.com",
     "dialect": "mysql"
   },
   "test": {
