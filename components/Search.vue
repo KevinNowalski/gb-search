@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     googleBooks() {
-      axios.get("http://localhost:3000/googlebooks", {
+      axios.get("https://tranquil-ridge-89003.herokuapp.com/googlebooks", {
         params: {
           searchInput: this.searchInput
         }
