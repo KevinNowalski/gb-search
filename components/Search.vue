@@ -17,15 +17,16 @@
             </div>
         </div>
         <div id="search-results">
+            <div id="no-results" v-if="totalItems == 0 && totalItems != null">No results found</div>
             <ul v-for="searchResult in searchResults" :key="searchResult.id">
-                <li><span>Title:</span> {{searchResult.volumeInfo.title}}</li>
-                <li><span>Authors:</span> {{searchResult.volumeInfo.authors}}</li>
-                <li><span>Description:</span> {{searchResult.volumeInfo.description}}</li>
-                <li><span>Categories:</span> {{searchResult.volumeInfo.categories}}</li>
-                <li><span>Publisher:</span> {{searchResult.volumeInfo.publisher}}</li>
-                <li><span>Pubilished Date:</span> {{searchResult.volumeInfo.publishedDate}}</li>
-                <li><span>Preview link:</span> <a :href="searchResult.volumeInfo.previewLink" target="_blank">{{searchResult.volumeInfo.previewLink}}</a></li>
-                <li><a :href="searchResult.volumeInfo.previewLink" target="_blank"><img :src="searchResult.volumeInfo.imageLinks.smallThumbnail" alt="cover image"></a></li>
+                <li v-if="searchResult.volumeInfo.title !== undefined"><span>Title:</span> {{searchResult.volumeInfo.title}}</li>
+                <li v-if="searchResult.volumeInfo.authors !== undefined"><span>Authors:</span> {{searchResult.volumeInfo.authors}}</li>
+                <li v-if="searchResult.volumeInfo.description !== undefined"><span>Description:</span> {{searchResult.volumeInfo.description}}</li>
+                <li v-if="searchResult.volumeInfo.categories !== undefined"><span>Categories:</span> {{searchResult.volumeInfo.categories}}</li>
+                <li v-if="searchResult.volumeInfo.publisher !== undefined"><span>Publisher:</span> {{searchResult.volumeInfo.publisher}}</li>
+                <li v-if="searchResult.volumeInfo.publishedDate !== undefined"><span>Pubilished Date:</span> {{searchResult.volumeInfo.publishedDate}}</li>
+                <li v-if="searchResult.volumeInfo.previewLink !== undefined"><span>Preview link:</span> <a :href="searchResult.volumeInfo.previewLink" target="_blank">{{searchResult.volumeInfo.previewLink}}</a></li>
+                <li><a :href="searchResult.volumeInfo.previewLink" target="_blank" v-if="searchResult.volumeInfo.previewLink !== undefined"><img :src="searchResult.volumeInfo.imageLinks.smallThumbnail" alt="cover image" v-if="searchResult.volumeInfo.imageLinks !== undefined"></a></li>
             </ul>
         </div><!-- /#search-results -->
     </div>
@@ -39,12 +40,13 @@ export default {
   data() {
     return {
       searchInput: '',
-      searchResults: ''
+      searchResults: '',
+      totalItems: null
     };
   },
   methods: {
     googleBooks() {
-      axios.get("https://tranquil-ridge-89003.herokuapp.com/googlebooks", {
+      axios.get("http://localhost:3000/googlebooks", {
         params: {
           searchInput: this.searchInput
         }
@@ -52,6 +54,7 @@ export default {
       .then(response => {
         console.log(response.data);
         this.searchResults = response.data.items;
+        this.totalItems = response.data.totalItems;
       })
       .catch(error => {
         console.error(error);
@@ -115,9 +118,10 @@ export default {
     }
 
     .search .v-icon {
-        display: none;
         margin-top: 8px;
     }
+
+    #no-results{padding:15px 0}
 
     #search-results {
         margin-top: -95px;
