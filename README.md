@@ -4,7 +4,7 @@ Google Search API will return a new query of books and store this query in a dat
 
 ## .env file
 
-In the root folder, add a .env set YOUR_API_KEY_HERE to your api key.  See .env_sample
+In the root folder, add a .env and set YOUR_API_KEY_HERE to your api key.  See .env_sample
 
 ## Build Setup
 
